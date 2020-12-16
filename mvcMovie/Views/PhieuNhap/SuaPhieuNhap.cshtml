@@ -1,0 +1,65 @@
+@model mvcMovie.ViewModels.PhieuNhapView
+@section body_scripts
+{
+    @Html.Partial("_LeftMenu.cshtml")
+}
+@section above_scripts
+{
+    @Html.Partial("_AboveMenu.cshtml")
+}
+
+<hr />
+<div class="card-body">
+     <h3>Phiếu Nhập</h3>
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="SuaPhieuNhapData" asp-controller="PhieuNhap">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+
+                    <label asp-for="PhieuNhapDTO.Id" class="control-label"></label>
+                    <input asp-for="PhieuNhapDTO.Id" value="@ViewBag.SuaPhieuNhap.Id" readonly="readonly" class="form-control" id="exampleInputEmail1" placeholder="Nhập ID" />
+                    <span asp-validation-for="PhieuNhapDTO.Id" class="text-danger"></span>
+
+                </div>
+
+                 <div class="form-group">
+
+                    <label asp-for="PhieuNhapDTO.Ten" class="control-label"></label>
+                    <input asp-for="PhieuNhapDTO.Ten" value="@ViewBag.SuaPhieuNhap.Ten"  class="form-control" id="exampleInputEmail1" placeholder="Nhập Tên" />
+                    <span asp-validation-for="PhieuNhapDTO.Ten" class="text-danger"></span>
+
+                </div>
+
+                 <div class="form-group">
+
+                    <label asp-for="PhieuNhapDTO.NgayNhap" class="control-label"></label>
+                    <input asp-for="PhieuNhapDTO.NgayNhap" value="@ViewBag.SuaPhieuNhap.NgayNhap"  class="form-control" id="exampleInputEmail1" placeholder="Nhập Ngày" />
+                    <span asp-validation-for="PhieuNhapDTO.NgayNhap" class="text-danger"></span>
+
+                </div>
+
+                 <div class="form-group">
+
+                    <label asp-for="PhieuNhapDTO.NhaCungCapId" class="control-label"></label>
+                    <input asp-for="PhieuNhapDTO.NhaCungCapId" value="@ViewBag.SuaPhieuNhap.NhaCungCapId" readonly="readonly" class="form-control" id="exampleInputEmail1" placeholder="Nhập ID nhà cung cấp" />
+                    <span asp-validation-for="PhieuNhapDTO.NhaCungCapId" class="text-danger"></span>
+
+                </div>
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Cập nhật</button>
+                </div>  
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

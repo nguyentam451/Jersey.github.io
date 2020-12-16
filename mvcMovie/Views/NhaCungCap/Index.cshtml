@@ -1,0 +1,50 @@
+@model mvcMovie.ViewModels.NhaCungCapView
+@section body_scripts
+{
+    @Html.Partial("_LeftMenu.cshtml")
+}
+@section above_scripts
+{
+    @Html.Partial("_AboveMenu.cshtml")
+}
+
+<div class="card-body">
+     <h3>Nhà Cung Cấp</h3>
+                            <div class="table-responsive">
+                                  <p>
+                                    <a asp-action="ThemNhaCungCap">Create New</a>
+                                </p>
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th  scope="col">Id</th>
+                                            <th  scope="col">Tên</th>
+                                            <th  scope="col">Địa Chỉ</th>
+                                            <th  scope="col">Điện Thoại</th>
+                                            <th scope="col"> </th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        @if (ViewBag.List != null) 
+                                        {
+
+                                        @foreach (var item in ViewBag.List)
+                                        {
+                                            <tr>
+                                                <td>@item.Id</td>
+                                                <td>@item.Ten</td>
+                                                <td>@item.DiaChi</td>
+                                                <td>@item.DienThoai</td>
+                                                <td>
+                                                <a asp-action="SuaNhaCungCap" asp-route-id="@item.Id">Edit</a> |
+                                                <a asp-action="ThongTinNhaCungCap" asp-route-id="@item.Id">Details</a> |
+                                                <a asp-action="XoaNhaCungCap" asp-route-id="@item.Id">Delete</a>
+                                                </td>
+                                            </tr>
+                                        }  
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>

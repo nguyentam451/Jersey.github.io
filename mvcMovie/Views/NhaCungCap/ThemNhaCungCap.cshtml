@@ -1,0 +1,67 @@
+@model mvcMovie.ViewModels.NhaCungCapView
+
+@{
+    ViewData["Title"] = "Create";
+}
+@section body_scripts
+{
+    @Html.Partial("_LeftMenu.cshtml")
+}
+@section above_scripts
+{
+    @Html.Partial("_AboveMenu.cshtml")
+}
+
+<div class="card-body">
+   
+  @if(ViewBag.Success != null)
+    {
+        <span class="text-success">@ViewBag.Success</span>
+    }
+
+<div class="card-body">
+    
+        <h3>Nhà Cung Cấp</h3>
+        <div class="col-md-4">
+            <form asp-action="ThemNhaCungCapData" asp-controller="NhaCungCap">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1" class="control-label">Tên</label>
+                    <input asp-for="NhaCungCapDTO.Ten" class="form-control" id="exampleInputEmail1" placeholder="Nhập tên nhà cung cấp" />
+                    <span asp-validation-for="NhaCungCapDTO.Ten" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1" class="control-label">Địa chỉ</label>
+                    <input asp-for="NhaCungCapDTO.DiaChi" class="form-control" id="exampleInputPassword1" placeholder="Nhập địa chỉ" />
+                    <span asp-validation-for="NhaCungCapDTO.DiaChi" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1" class="control-label">Điện thoại</label>
+                    <input asp-for="NhaCungCapDTO.DienThoai" class="form-control" id="exampleInputPassword1" placeholder="Nhập số điện thoại" />
+                    <span asp-validation-for="NhaCungCapDTO.DienThoai" class="text-danger"></span>
+                </div>
+
+                
+
+
+
+                <div>
+                    <button type="submit" class="btn btn-primary">Thêm</button>
+                </div>
+                <div>
+                    <a asp-action="Index">Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

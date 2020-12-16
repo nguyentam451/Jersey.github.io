@@ -1,0 +1,77 @@
+@model mvcMovie.ViewModels.HangHoaView
+
+@{
+    ViewData["Title"] = "Create";
+}
+@section body_scripts
+{
+    @Html.Partial("_LeftMenu.cshtml")
+}
+@section above_scripts
+{
+    @Html.Partial("_AboveMenu.cshtml")
+}
+
+<div class="card-body">
+   
+  @if(ViewBag.Success != null)
+    {
+        <span class="text-success">@ViewBag.Success</span>
+    }
+
+<div class="card-body">
+    <h3>Hàng Hóa</h3>
+    <div class="col-md-4">
+        <form asp-action="ThemHangHoaData" asp-controller="HangHoa">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="control-label">Tên</label>
+                <input asp-for="HangHoaDTO.Ten" class="form-control" id="exampleInputEmail1" placeholder="Nhập tên hàng" />
+                <span asp-validation-for="HangHoaDTO.Ten" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputPassword1" class="control-label">LoaiHangHoaId</label>
+                <input asp-for="HangHoaDTO.LoaiHangHoaId" class="form-control" id="exampleInputPassword1" placeholder="Nhập ID Loại hàng hóa" />
+                <span asp-validation-for="HangHoaDTO.LoaiHangHoaId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputPassword1" class="control-label">Đơn Giá</label>
+                <input asp-for="HangHoaDTO.DonGia" class="form-control" id="exampleInputPassword1" placeholder="Nhập đơn giá" />
+                <span asp-validation-for="HangHoaDTO.DonGia" class="text-danger"></span>
+            </div>
+
+             <div class="form-group">
+                <label for="exampleInputPassword1" class="control-label">Số Lượng</label>
+                <input asp-for="HangHoaDTO.SoLuong" class="form-control" id="exampleInputPassword1" placeholder="Nhập số lượng" />
+                <span asp-validation-for="HangHoaDTO.SoLuong" class="text-danger"></span>
+            </div>
+
+             <div class="form-group">
+                <label for="exampleInputPassword1" class="control-label">Tình Trạng</label>
+                <input asp-for="HangHoaDTO.TinhTrang" class="form-control" id="exampleInputPassword1" placeholder="Nhập tình trạng" />
+                <span asp-validation-for="HangHoaDTO.TinhTrang" class="text-danger"></span>
+            </div>
+
+            
+
+
+
+             <div>
+                <button type="submit" class="btn btn-primary">Thêm</button>
+            </div>
+            <div>
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

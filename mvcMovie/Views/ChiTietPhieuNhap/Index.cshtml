@@ -1,0 +1,49 @@
+@model mvcMovie.ViewModels.ChiTietHoaDonView
+@section body_scripts
+{
+    @Html.Partial("_LeftMenu.cshtml")
+}
+@section above_scripts
+{
+    @Html.Partial("_AboveMenu.cshtml")
+}
+
+
+<div class="card-body">
+                            <div class="table-responsive">
+                                <p>
+                                    @* <a asp-action="Create">Create New</a> *@
+                                </p>
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th  scope="col">HangHoaId</th>
+                                            <th  scope="col">PhieuNhapId</th>
+                                            <th scope="col">Số Lượng</th>
+                                            <th scope="col">Đơn Giá</th>
+                                            <th scope="col"> </th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        @if (ViewBag.List != null) 
+                                        {
+
+                                        @foreach (var item in ViewBag.List)
+                                        {
+                                            <tr>
+                                                <td>@item.HangHoaId</td>
+                                                <td>@item.PhieuNhapId</td>
+                                                <td>@item.SoLuong</td>
+                                                <td>@item.DonGia</td>
+                                                <td>
+                                                 @* <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> *@
+                                                 </td>
+                                            </tr>
+                                        }  
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>

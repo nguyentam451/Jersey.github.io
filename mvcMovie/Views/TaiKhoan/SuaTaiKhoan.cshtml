@@ -1,0 +1,73 @@
+@model mvcMovie.ViewModels.TaiKhoanView
+@section body_scripts
+{
+    @Html.Partial("_LeftMenu.cshtml")
+}
+@section above_scripts
+{
+    @Html.Partial("_AboveMenu.cshtml")
+}
+
+<hr />
+<div class="card-body">
+    <h3>Tài Khoản</h3>
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="SuaTaiKhoanData" asp-controller="TaiKhoan">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+
+                    <label asp-for="TaiKhoanDTO.Id" class="control-label"></label>
+                    <input asp-for="TaiKhoanDTO.Id" value="@ViewBag.SuaTaiKhoan.Id" readonly="readonly" class="form-control" id="exampleInputEmail1" placeholder="Nhập ID" />
+                    <span asp-validation-for="TaiKhoanDTO.Id" class="text-danger"></span>
+
+                </div>
+
+                 <div class="form-group">
+
+                    <label asp-for="TaiKhoanDTO.Username" class="control-label"></label>
+                    <input asp-for="TaiKhoanDTO.Username" value="@ViewBag.SuaTaiKhoan.Username"  class="form-control" id="exampleInputEmail1" placeholder="Nhập Username" />
+                    <span asp-validation-for="TaiKhoanDTO.Username" class="text-danger"></span>
+
+                </div>
+
+                 <div class="form-group">
+
+                    <label asp-for="TaiKhoanDTO.Password" class="control-label"></label>
+                    <input asp-for="TaiKhoanDTO.Password" value="@ViewBag.SuaTaiKhoan.Password"  class="form-control" id="exampleInputEmail1" placeholder="Nhập Password" />
+                    <span asp-validation-for="TaiKhoanDTO.Password" class="text-danger"></span>
+
+                </div>
+
+                  <div class="form-group">
+
+                    <label asp-for="TaiKhoanDTO.Quyen" class="control-label"></label>
+                    <input asp-for="TaiKhoanDTO.Quyen" value="@ViewBag.SuaTaiKhoan.Quyen" class="form-control" id="exampleInputEmail1" placeholder="Nhập Quyền" />
+                    <span asp-validation-for="TaiKhoanDTO.Quyen" class="text-danger"></span>
+
+                </div>
+
+                 <div class="form-group">
+
+                    <label asp-for="TaiKhoanDTO.KhachHangId" class="control-label"></label>
+                    <input asp-for="TaiKhoanDTO.KhachHangId" value="@ViewBag.SuaTaiKhoan.KhachHangId" readonly="readonly" class="form-control" id="exampleInputEmail1" placeholder="Nhập Password" />
+                    <span asp-validation-for="TaiKhoanDTO.KhachHangId" class="text-danger"></span>
+
+                </div>
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Cập nhật</button>
+                </div>  
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

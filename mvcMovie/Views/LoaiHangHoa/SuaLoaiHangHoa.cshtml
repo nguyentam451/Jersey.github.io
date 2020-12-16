@@ -1,0 +1,50 @@
+@model mvcMovie.ViewModels.LoaiHangHoaView
+@section body_scripts
+{
+    @Html.Partial("_LeftMenu.cshtml")
+}
+@section above_scripts
+{
+    @Html.Partial("_AboveMenu.cshtml")
+}
+
+<hr />
+<div class="card-body">
+    <h3>Loại Hàng</h3>
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="SuaLoaiHangHoaData" asp-controller="LoaiHangHoa">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+
+                    <label asp-for="LoaiHangHoaDTO.Id" class="control-label"></label>
+                    <input asp-for="LoaiHangHoaDTO.Id" value="@ViewBag.SuaLoaiHangHoa.Id" readonly="readonly" class="form-control" id="exampleInputEmail1" placeholder="Nhập ID" />
+                    <span asp-validation-for="LoaiHangHoaDTO.Id" class="text-danger"></span>
+
+                </div>
+
+                 <div class="form-group">
+
+                    <label asp-for="LoaiHangHoaDTO.Ten" class="control-label"></label>
+                    <input asp-for="LoaiHangHoaDTO.Ten" value="@ViewBag.SuaLoaiHangHoa.Ten"  class="form-control" id="exampleInputEmail1" placeholder="Nhập Tên" />
+                    <span asp-validation-for="LoaiHangHoaDTO.Ten" class="text-danger"></span>
+
+                </div>
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Cập nhật</button>
+                </div>  
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

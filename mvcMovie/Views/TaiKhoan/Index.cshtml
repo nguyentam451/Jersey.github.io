@@ -1,0 +1,58 @@
+@model mvcMovie.ViewModels.TaiKhoanView
+@section body_scripts
+{
+    @Html.Partial("_LeftMenu.cshtml")
+}
+@section above_scripts
+{
+    @Html.Partial("_AboveMenu.cshtml")
+}
+
+<div class="card-body">
+    <h3>Tài Khoản</h3>
+                            <div class="table-responsive">
+                                  <p>
+                                      @*Gọi phương thức thêm tài khoản trong controller *@
+                                     <a asp-action="ThemTaiKhoan">Create New</a> 
+                                </p>
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th  scope="col">UserName</th>
+                                            <th  scope="col">Password</th>
+                                            <th scope="col">Quyền</th>
+                                            <th  scope="col">KhachHangId</th>
+                                            <th scope="col"> </th>
+                                          
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        @if (ViewBag.List != null) 
+                                        {
+
+                                        @foreach (var item in ViewBag.List)
+                                        {
+                                            <tr>
+                                                <td>@item.Username</td>
+                                                <td>@item.Password</td>
+                                                <td>@item.Quyen</td>
+                                                <td>@item.KhachHangId</td>
+                                                 <td>
+                                                 <a asp-action="SuaTaiKhoan" asp-route-id="@item.Id">Edit</a> |
+                                                 <a asp-action="ThongTinTaiKhoan" asp-route-id="@item.Id">Details</a> |
+                                                 <a asp-action="XoaTaiKhoan" asp-route-id="@item.Id">Delete</a>
+                                                 </td>
+                                            </tr>
+                                        }  
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+@* no ghi la Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: 'Application.DTOs.TaiKhoanDTO' does not contain a definition for 
+'UserName' ---> ko co ten bien UserName, chu N em ghi in hoa
+ma ca dem hom qua voi sang nay ma e k biet check loi nen chiu
+bth no co cai page  hien loi ma kb s em k co *@
+
+@* Co gi em chay ma no ra HTTP ERROR 500 la b em code bi loi~ gi nha em vo trong day em check da ok  da cam on anh hehe *@

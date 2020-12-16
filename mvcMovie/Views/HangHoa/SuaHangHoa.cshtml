@@ -1,0 +1,82 @@
+@model mvcMovie.ViewModels.HangHoaView
+@section body_scripts
+{
+    @Html.Partial("_LeftMenu.cshtml")
+}
+@section above_scripts
+{
+    @Html.Partial("_AboveMenu.cshtml")
+}
+
+<hr />
+<div class="card-body">
+    <h3>Hàng Hóa</h3>
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="SuaHangHoaData" asp-controller="HangHoa">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+
+                    <label asp-for="HangHoaDTO.Id" class="control-label"></label>
+                    <input asp-for="HangHoaDTO.Id" value="@ViewBag.SuaHangHoa.Id" readonly="readonly" class="form-control" id="exampleInputEmail1" placeholder="Nhập ID" />
+                    <span asp-validation-for="HangHoaDTO.Id" class="text-danger"></span>
+
+                </div>
+
+                 <div class="form-group">
+
+                    <label asp-for="HangHoaDTO.Ten" class="control-label"></label>
+                    <input asp-for="HangHoaDTO.Ten" value="@ViewBag.SuaHangHoa.Ten"  class="form-control" id="exampleInputEmail1" placeholder="Nhập Tên" />
+                    <span asp-validation-for="HangHoaDTO.Ten" class="text-danger"></span>
+
+                </div>
+
+                 <div class="form-group">
+
+                    <label asp-for="HangHoaDTO.LoaiHangHoaId" class="control-label"></label>
+                    <input asp-for="HangHoaDTO.LoaiHangHoaId" value="@ViewBag.SuaHangHoa.LoaiHangHoaId"  class="form-control" id="exampleInputEmail1" placeholder="Nhập ID Loại hàng" />
+                    <span asp-validation-for="HangHoaDTO.LoaiHangHoaId" class="text-danger"></span>
+
+                </div>
+
+                 <div class="form-group">
+
+                    <label asp-for="HangHoaDTO.DonGia" class="control-label"></label>
+                    <input asp-for="HangHoaDTO.DonGia" value="@ViewBag.SuaHangHoa.DonGia" class="form-control" id="exampleInputEmail1" placeholder="Nhập đơn giá" />
+                    <span asp-validation-for="HangHoaDTO.DonGia" class="text-danger"></span>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label asp-for="HangHoaDTO.SoLuong" class="control-label"></label>
+                    <input asp-for="HangHoaDTO.SoLuong" value="@ViewBag.SuaHangHoa.SoLuong" class="form-control" id="exampleInputEmail1" placeholder="Nhập số lượng" />
+                    <span asp-validation-for="HangHoaDTO.SoLuong" class="text-danger"></span>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label asp-for="HangHoaDTO.TinhTrang" class="control-label"></label>
+                    <input asp-for="HangHoaDTO.TinhTrang" value="@ViewBag.SuaHangHoa.TinhTrang" class="form-control" id="exampleInputEmail1" placeholder="Nhập tình trạng" />
+                    <span asp-validation-for="HangHoaDTO.TinhTrang" class="text-danger"></span>
+
+                </div>
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Cập nhật</button>
+                </div>  
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

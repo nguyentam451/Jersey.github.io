@@ -1,0 +1,55 @@
+@model mvcMovie.ViewModels.HangHoaView
+@section body_scripts
+{
+    @Html.Partial("_LeftMenu.cshtml")
+}
+@section above_scripts
+{
+    @Html.Partial("_AboveMenu.cshtml")
+}
+
+
+<div class="card-body">
+    <h3>Hàng Hóa</h3>
+                            <div class="table-responsive">
+                                <p>
+                                    <a asp-action="ThemHangHoa">Create New</a>
+                                </p>
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th  scope="col">Id</th>
+                                            <th  scope="col">Tên</th>
+                                            <th  scope="col">LoaiHangHoaId</th>
+                                            <th  scope="col">Đơn Giá</th>
+                                            <th scope="col">Số Lượng</th>
+                                            <th scope="col">Tình Trạng</th>
+                                            <th scope="col"> </th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        @if (ViewBag.List != null) 
+                                        {
+
+                                        @foreach (var item in ViewBag.List)
+                                        {
+                                            <tr>
+                                                <td>@item.Id</td>
+                                                <td>@item.Ten</td>
+                                                <td>@item.LoaiHangHoaId</td>
+                                                <td>@item.DonGia</td>
+                                                <td>@item.SoLuong</td>
+                                                <td>@item.TinhTrang</td>
+                                                <td>
+                                                 <a asp-action="SuaHangHoa" asp-route-id="@item.Id">Edit</a> |
+                                                 <a asp-action="ThongTinHangHoa" asp-route-id="@item.Id">Details</a> |
+                                                 <a asp-action="XoaHangHoa" asp-route-id="@item.Id">Delete</a>
+                                                 </td>
+                                            </tr>
+                                        }  
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>

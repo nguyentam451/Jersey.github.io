@@ -1,0 +1,46 @@
+@model mvcMovie.ViewModels.LoaiHangHoaView
+@section body_scripts
+{
+    @Html.Partial("_LeftMenu.cshtml")
+}
+@section above_scripts
+{
+    @Html.Partial("_AboveMenu.cshtml")
+}
+
+<div class="card-body">
+    <h3>Loại Hàng</h3>
+                            <div class="table-responsive">
+                                  <p>
+                                    <a asp-action="ThemLoaiHangHoa">Create New</a>
+                                </p>
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th  scope="col">Id</th>
+                                            <th  scope="col">Tên</th>
+                                            <th scope="col"> </th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        @if (ViewBag.List != null) 
+                                        {
+
+                                        @foreach (var item in ViewBag.List)
+                                        {
+                                            <tr>
+                                                <td>@item.Id</td>
+                                                <td>@item.Ten</td>
+                                                 <td>
+                                                 <a asp-action="SuaLoaiHangHoa" asp-route-id="@item.Id">Edit</a> |
+                                                 <a asp-action="ThongTinLoaiHangHoa" asp-route-id="@item.Id">Details</a> |
+                                                 <a asp-action="XoaLoaiHangHoa" asp-route-id="@item.Id">Delete</a>
+                                                 </td>
+                                            </tr>
+                                        }  
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>

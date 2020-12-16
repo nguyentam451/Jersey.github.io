@@ -1,0 +1,63 @@
+@model mvcMovie.ViewModels.NhaCungCapView
+@section body_scripts
+{
+    @Html.Partial("_LeftMenu.cshtml")
+}
+@section above_scripts
+{
+    @Html.Partial("_AboveMenu.cshtml")
+}
+
+<hr />
+<div class="card-body">
+     <h3>Nhà Cung Cấp</h3>
+    <div class="row">
+        <div class="col-md-4">
+            <form  asp-controller="NhaCungCap">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+
+                    <label asp-for="NhaCungCapDTO.Id" class="control-label"></label>
+                    <input asp-for="NhaCungCapDTO.Id" value="@ViewBag.ThongTinNhaCungCap.Id" readonly="readonly" class="form-control" id="exampleInputEmail1"  />
+                    <span asp-validation-for="NhaCungCapDTO.Id" class="text-danger"></span>
+
+                </div>
+
+                 <div class="form-group">
+
+                    <label asp-for="NhaCungCapDTO.Ten" class="control-label"></label>
+                    <input asp-for="NhaCungCapDTO.Ten" value="@ViewBag.ThongTinNhaCungCap.Ten" readonly="readonly"  class="form-control" id="exampleInputEmail1"  />
+                    <span asp-validation-for="NhaCungCapDTO.Ten" class="text-danger"></span>
+
+                </div>
+
+                 <div class="form-group">
+
+                    <label asp-for="NhaCungCapDTO.DiaChi" class="control-label"></label>
+                    <input asp-for="NhaCungCapDTO.DiaChi" value="@ViewBag.ThongTinNhaCungCap.DiaChi" readonly="readonly" class="form-control" id="exampleInputEmail1" />
+                    <span asp-validation-for="NhaCungCapDTO.DiaChi" class="text-danger"></span>
+
+                </div>
+
+                 <div class="form-group">
+
+                    <label asp-for="NhaCungCapDTO.DienThoai" class="control-label"></label>
+                    <input asp-for="NhaCungCapDTO.DienThoai" value="@ViewBag.ThongTinNhaCungCap.DienThoai" readonly="readonly" class="form-control" id="exampleInputEmail1" />
+                    <span asp-validation-for="NhaCungCapDTO.DienThoai" class="text-danger"></span>
+
+                </div>
+             
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

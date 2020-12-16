@@ -1,0 +1,64 @@
+@model mvcMovie.ViewModels.PhieuNhapView
+
+@{
+    ViewData["Title"] = "Create";
+}
+@section body_scripts
+{
+    @Html.Partial("_LeftMenu.cshtml")
+}
+@section above_scripts
+{
+    @Html.Partial("_AboveMenu.cshtml")
+}
+
+<div class="card-body">
+   
+  @if(ViewBag.Success != null)
+    {
+        <span class="text-success">@ViewBag.Success</span>
+    }
+
+<div class="row">
+     <h3>Phiếu Nhập</h3>
+    <div class="col-md-4">
+        <form asp-action="ThemPhieuNhapData" asp-controller="PhieuNhap">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="control-label">Tên</label>
+                <input asp-for="PhieuNhapDTO.Ten" class="form-control" id="exampleInputEmail1" placeholder="Nhập tên phiếu" />
+                <span asp-validation-for="PhieuNhapDTO.Ten" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="control-label">Tên</label>
+                <input asp-for="PhieuNhapDTO.NgayNhap" class="form-control" id="exampleInputEmail1" placeholder="Nhập ngày" />
+                <span asp-validation-for="PhieuNhapDTO.NgayNhap" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label for="exampleInputPassword1" class="control-label">NhaCungCapId</label>
+                <input asp-for="PhieuNhapDTO.NhaCungCapId" class="form-control" id="exampleInputPassword1" placeholder="ID Nhà cung cấp" />
+                <span asp-validation-for="PhieuNhapDTO.NhaCungCapId" class="text-danger"></span>
+            </div>
+
+
+
+             <div>
+                <button type="submit" class="btn btn-primary">Thêm</button>
+            </div>
+            <div>
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
