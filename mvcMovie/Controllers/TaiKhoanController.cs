@@ -15,10 +15,10 @@ namespace mvcMovie.Controllers
          
        //  private readonly ShopLinhKienDbContext _context;
         //nay chay co bi cai do k
-        public TaiKhoanController (ITaiKhoanServices taiKhoanServices,IKhachHangServices khachHangServices)
+        public TaiKhoanController (ITaiKhoanServices taiKhoanServices)
         {
             _taiKhoanServices = taiKhoanServices;
-            _khachHangServices = khachHangServices;
+        
         }
     
          public IActionResult Index()   // nếu mà em để cái dòng này  private readonly ShopLinhKienDbContext _context; thì chạy được
@@ -34,40 +34,46 @@ namespace mvcMovie.Controllers
             return View();
         }
 
-
-        public IActionResult ThemTaiKhoanData(TaiKhoanSaveModel taiKhoanSaveModel) 
+          public IActionResult ThemTaiKhoanData(TaiKhoanView TaiKhoanView)
         {
-            //Cai nay la cai dau tien em them xoa sua ha dung roi anh oi 
-            // luc do em chua them cai form nay
-            // luc do chi la user name voi password
-            if(ModelState.IsValid)//kiểm tra dữ liệu đã được post đúng hay chưa
+            if(ModelState.IsValid)
             {   
-                // var view = new KhachHangView();
-                var khachHang = new KhachHangDTO {
-                    Ten = taiKhoanSaveModel.Ten,
-                    DiaChi = taiKhoanSaveModel.DiaChi,
-                    DienThoai = taiKhoanSaveModel.DienThoai,
-                };
-                _khachHangServices.ThemKhachHang(khachHang);
-                //Do them vo thi ko có the nào cap nhật th khachHang có id cả, h id nó đg là 0
-                //Em làm phần khác đi h sửa phải sửa từ repository nữa 
-                // a vay chac e bo phan nay
-                // a sua giup em cai cho ngay thang
-                var taiKhoan = new TaiKhoanDTO {
-                    KhachHangId = khachHang.Id,
-                    Password = taiKhoanSaveModel.Password,
-                    Username = taiKhoanSaveModel.Username,
-                    Quyen = taiKhoanSaveModel.Quyen,
-                };
-                // taiKhoanView.TaiKhoanDTO.KhachHangId = taiKhoanView.KhachHangDTO.Id; // gán id khách hàng băngf KhachHangID
-                _taiKhoanServices.ThemTaiKhoan(taiKhoan);
-                 Index();//cập nhật xong load lại trang index
-                return View(nameof(Index));//return view là trả về view nhưng không chạy những gì trong đó
-                                            //còn redirecttoaction là thực hiện trong index rồi mới trả về view
+                _taiKhoanServices.ThemTaiKhoan(TaiKhoanView.TaiKhoanDTO);
+                 Index();
+                return View(nameof(Index));
             }
-            ViewBag.Error = "Thêm tài khoản thất bại";
+            ViewBag.Error = "Thêm phiếu nhập thất bại";
             return View(nameof(Index));
         }
+
+
+        // public IActionResult ThemTaiKhoanData(TaiKhoanSaveModel taiKhoanSaveModel) 
+        // {
+           
+        //     {   
+        //         // var view = new KhachHangView();
+        //         var khachHang = new KhachHangDTO {
+        //             Ten = taiKhoanSaveModel.Ten,
+        //             DiaChi = taiKhoanSaveModel.DiaChi,
+        //             DienThoai = taiKhoanSaveModel.DienThoai,
+        //         };
+        //         _khachHangServices.ThemKhachHang(khachHang);
+              
+        //         var taiKhoan = new TaiKhoanDTO {
+        //             KhachHangId = khachHang.Id,
+        //             Password = taiKhoanSaveModel.Password,
+        //             Username = taiKhoanSaveModel.Username,
+        //             Quyen = taiKhoanSaveModel.Quyen,
+        //         };
+        //         // taiKhoanView.TaiKhoanDTO.KhachHangId = taiKhoanView.KhachHangDTO.Id; // gán id khách hàng băngf KhachHangID
+        //         _taiKhoanServices.ThemTaiKhoan(taiKhoan);
+        //          Index();//cập nhật xong load lại trang index
+        //         return View(nameof(Index));//return view là trả về view nhưng không chạy những gì trong đó
+        //                                     //còn redirecttoaction là thực hiện trong index rồi mới trả về view
+        //     }
+        //     ViewBag.Error = "Thêm tài khoản thất bại";
+        //     return View(nameof(Index));
+        // }
 
          public IActionResult SuaTaiKhoanData(TaiKhoanView TaiKhoanView)//Cập nhật một đối tượng xuống database
         {

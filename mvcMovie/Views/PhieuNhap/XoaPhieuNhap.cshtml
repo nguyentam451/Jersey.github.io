@@ -35,7 +35,7 @@
                  <div class="form-group">
 
                     <label asp-for="PhieuNhapDTO.NgayNhap" class="control-label"></label>
-                    <input asp-for="PhieuNhapDTO.NgayNhap" value="@ViewBag.XoaPhieuNhap.NgayNhap" readonly="readonly"  class="form-control" id="exampleInputEmail1"/>
+                    <label asp-for="PhieuNhapDTO.NgayNhap"  readonly="readonly" class="form-control" >@ViewBag.XoaPhieuNhap.NgayNhap </label>
                     <span asp-validation-for="PhieuNhapDTO.NgayNhap" class="text-danger"></span>
 
                 </div>
